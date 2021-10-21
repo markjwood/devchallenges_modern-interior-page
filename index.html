@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1,
+  maximum-scale=5"
+		/>
+		<link rel="icon" href="devchallenges.png" />
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="https://devchallenges.io/"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&family=Lora:wght@500;700&family=Montserrat:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+
+		<title>Modern Interior</title>
+	</head>
+	<body style="--test: 123; --test2: 456">
+		<div class="wrapper">
+			<header>
+				<a href="#" class="btn">This Interior</a>
+				<nav>
+					<div class="hidden">
+						<ul class="nav-menu">
+							<li><a class="nav-link nav-link--active" href="#">Home</a></li>
+							<li><a class="nav-link" href="#">Collection</a></li>
+							<li><a class="nav-link" href="#">About</a></li>
+							<li><a class="nav-link" href="#">Contact</a></li>
+						</ul>
+					</div>
+					<div class="mobile-nav visible">
+						<button class="material-icons" id="mobile-nav--btn">menu</button>
+						<ul class="nav-menu nav-menu--mobile">
+							<li><a class="nav-link nav-link--active" href="#">Home</a></li>
+							<li><a class="nav-link" href="#">Collection</a></li>
+							<li><a class="nav-link" href="#">About</a></li>
+							<li><a class="nav-link" href="#">Contact</a></li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+		</div>
+
+		<script>
+			const breakpoint = getComputedStyle(
+				document.documentElement
+			).getPropertyValue('--breakpoint');
+			const mql = window.matchMedia(`(min-width: ${breakpoint}px)`);
+
+			mql.onchange = () => {
+				toggleVisibleMenu();
+				setActivePage();
+			};
+			window.onload = setActivePage;
+
+			function setActivePage() {
+				const menu = document.querySelector('nav > .visible');
+				console.log(menu);
+				const hiddenMenu = document.querySelector('nav > .hidden');
+
+				hiddenMenu.removeEventListener('click', arguments.callee);
+				menu.addEventListener('click', e => {
+					if (e.target.tagName === 'A') {
+						menu
+							.querySelector('.nav-link--active')
+							.classList.remove('nav-link--active');
+						e.target.classList.add('nav-link--active');
+					}
+				});
+			}
+			function toggleVisibleMenu() {
+				const visible = document.querySelector('nav > .visible');
+				const hidden = document.querySelector('nav > .hidden');
+
+				visible.classList.remove('visible');
+				visible.classList.add('hidden');
+				hidden.classList.remove('hidden');
+				hidden.classList.add('visible');
+				console.log(visible, hidden);
+			}
+			function toggleActive(link) {
+				const menu = document.querySelector('nav > .visible > ul');
+				const currentActive =
+					link.parentElement.querySelector('.nav-link--active');
+
+				link.classList.add('nav-link--active');
+				currentActive.classList.remove('nav-link--active');
+			}
+		</script>
+	</body>
+</html>
