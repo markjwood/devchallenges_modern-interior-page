@@ -31,77 +31,37 @@
 
 		<title>Modern Interior</title>
 	</head>
-	<body style="--test: 123; --test2: 456">
+	<body>
 		<div class="wrapper">
 			<header>
 				<a href="#" class="btn">This Interior</a>
 				<nav>
-					<div class="hidden">
+					<div class="main-nav">
 						<ul class="nav-menu">
-							<li><a class="nav-link nav-link--active" href="#">Home</a></li>
-							<li><a class="nav-link" href="#">Collection</a></li>
-							<li><a class="nav-link" href="#">About</a></li>
-							<li><a class="nav-link" href="#">Contact</a></li>
+							<li>
+								<a class="nav-link home nav-link--active" href="#">Home</a>
+							</li>
+							<li><a class="nav-link collection" href="#">Collection</a></li>
+							<li><a class="nav-link about" href="#">About</a></li>
+							<li><a class="nav-link contact" href="#">Contact</a></li>
 						</ul>
 					</div>
-					<div class="mobile-nav visible">
+					<div class="mobile-nav">
+						<div class="overlay hidden" id="overlay"></div>
 						<button class="material-icons" id="mobile-nav--btn">menu</button>
-						<ul class="nav-menu nav-menu--mobile">
-							<li><a class="nav-link nav-link--active" href="#">Home</a></li>
-							<li><a class="nav-link" href="#">Collection</a></li>
-							<li><a class="nav-link" href="#">About</a></li>
-							<li><a class="nav-link" href="#">Contact</a></li>
+						<ul class="nav-menu nav-menu--mobile hidden">
+							<li>
+								<a class="nav-link home nav-link--active" href="#">Home</a>
+							</li>
+							<li><a class="nav-link collection" href="#">Collection</a></li>
+							<li><a class="nav-link about" href="#">About</a></li>
+							<li><a class="nav-link contact" href="#">Contact</a></li>
 						</ul>
 					</div>
 				</nav>
 			</header>
 		</div>
 
-		<script>
-			const breakpoint = getComputedStyle(
-				document.documentElement
-			).getPropertyValue('--breakpoint');
-			const mql = window.matchMedia(`(min-width: ${breakpoint}px)`);
-
-			mql.onchange = () => {
-				toggleVisibleMenu();
-				setActivePage();
-			};
-			window.onload = setActivePage;
-
-			function setActivePage() {
-				const menu = document.querySelector('nav > .visible');
-				console.log(menu);
-				const hiddenMenu = document.querySelector('nav > .hidden');
-
-				hiddenMenu.removeEventListener('click', arguments.callee);
-				menu.addEventListener('click', e => {
-					if (e.target.tagName === 'A') {
-						menu
-							.querySelector('.nav-link--active')
-							.classList.remove('nav-link--active');
-						e.target.classList.add('nav-link--active');
-					}
-				});
-			}
-			function toggleVisibleMenu() {
-				const visible = document.querySelector('nav > .visible');
-				const hidden = document.querySelector('nav > .hidden');
-
-				visible.classList.remove('visible');
-				visible.classList.add('hidden');
-				hidden.classList.remove('hidden');
-				hidden.classList.add('visible');
-				console.log(visible, hidden);
-			}
-			function toggleActive(link) {
-				const menu = document.querySelector('nav > .visible > ul');
-				const currentActive =
-					link.parentElement.querySelector('.nav-link--active');
-
-				link.classList.add('nav-link--active');
-				currentActive.classList.remove('nav-link--active');
-			}
-		</script>
+		<script src="/script.js"></script>
 	</body>
 </html>

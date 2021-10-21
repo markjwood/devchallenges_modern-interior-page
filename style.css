@@ -5,8 +5,6 @@
 	--ff-light: 'Crimson Pro', serif;
 
 	--clr-highlight: hsl(41, 96%, 63%);
-
-	--breakpoint: 700;
 }
 
 /* reset */
@@ -80,8 +78,16 @@ header .btn {
 	transition: background-color 300ms, color 300ms;
 }
 
+.main-nav {
+	display: none;
+}
+
+.main-nav li + li {
+	margin-left: 5em;
+}
+
 .mobile-nav > button {
-	position: relative;
+	position: relative; /* without this z-index won't work */
 }
 
 header > .btn,
@@ -104,6 +110,7 @@ header .btn:focus {
 }
 
 .nav-menu {
+	display: flex;
 	list-style-type: none;
 	font-weight: 500;
 	font-size: 1.125rem;
@@ -115,8 +122,14 @@ header .btn:focus {
 	display: none;
 }
 
-.visible .nav-menu {
-	display: flex;
+.overlay {
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: hsl(0 0% 0% / 0.4);
 }
 
 .nav-menu--mobile {
@@ -125,10 +138,9 @@ header .btn:focus {
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .nav-menu--mobile > li {
@@ -155,9 +167,11 @@ header .btn:focus {
 }
 
 /* media queries */
-:root {
-	--breakpoint: 700; /* to be read by JS */
-}
-@media screen and (min-width: 700px) {
-	/* stuff */
+@media screen and (min-width: 46.25rem) {
+	.mobile-nav {
+		display: none;
+	}
+	.main-nav {
+		display: block;
+	}
 }
