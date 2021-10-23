@@ -38,6 +38,7 @@ button,
 body {
 	font-family: var(--ff-sans);
 	font-size: 0.875rem;
+	line-height: 1.4;
 }
 
 h1,
@@ -45,6 +46,17 @@ h1,
 h2,
 .h2 {
 	font-family: var(--ff-serif);
+}
+
+h1,
+.h1 {
+	font-size: 2.25rem;
+	font-weight: 500;
+}
+
+.btn {
+	color: inherit;
+	text-decoration: none;
 }
 
 /* layout & basic design */
@@ -57,6 +69,7 @@ body {
 	width: 100%;
 	max-width: 1440px;
 	margin: auto;
+	min-height: 100vh;
 }
 
 /* header & nav */
@@ -67,8 +80,6 @@ header {
 }
 
 header .btn {
-	color: inherit;
-	text-decoration: none;
 	text-transform: uppercase;
 	font-family: var(--ff-light);
 	font-weight: 200;
@@ -129,7 +140,7 @@ header .btn:focus {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: hsl(0 0% 0% / 0.4);
+	background: hsl(0 0% 0% / 0.8);
 }
 
 .nav-menu--mobile {
@@ -164,6 +175,45 @@ header .btn:focus {
 	border-color: #fff;
 	transition: border 300ms, color 300ms;
 	cursor: grab; /* link is still clickable but cursor doesn't change */
+}
+
+/* main content */
+.about > * {
+	margin-top: 2em;
+}
+
+.about > h1 {
+	margin-top: 1em;
+}
+
+.about p {
+	max-width: 23ch;
+}
+
+.about .btn {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	font-weight: 700;
+}
+
+.about .btn > span {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-left: 1em;
+}
+
+/* footer */
+footer {
+	font-family: var(--ff-sans);
+	color: #a9a9a9;
+	font-weight: 500;
+	text-align: center;
+}
+
+footer a {
+	color: inherit;
+	font-weight: 700;
 }
 
 /* media queries */
