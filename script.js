@@ -32,12 +32,11 @@ function setActivePage(el) {
 		const toMakeActive = document.querySelectorAll(
 			'.' + menuItem.toLowerCase()
 		);
-		const currentActive = document.querySelectorAll('.nav-link--active');
 
 		toMakeActive.forEach(link => {
 			link.classList.add('nav-link--active');
 		});
-		currentActive.forEach(link => {
+		active.forEach(link => {
 			link.classList.remove('nav-link--active');
 		});
 	}
