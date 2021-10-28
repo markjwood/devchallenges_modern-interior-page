@@ -163,7 +163,7 @@ header .btn:focus {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: hsl(0 0% 0% / 0.8);
+	background: hsl(0 0% 0% / 0.9);
 }
 
 .nav-menu--mobile {
